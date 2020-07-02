@@ -1,4 +1,6 @@
 openapi: "3.0.0"
+
+
 info:
   version: 1.0.0
   title: AnotherPetstore
@@ -99,6 +101,25 @@ paths:
           description: The id of the pet to retrieve
           schema:
             type: integer
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Pet"
+        '404':
+          description: Not found response
+          content:
+            application/json:
+              schema:
+                type: string
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PetError"
 components:
   schemas:
     Pet:
